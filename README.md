@@ -44,9 +44,7 @@ No personal data is sent to any backend server.
 |  | Recharts | Data visualization and analytics charts |
 | **AI & APIs** | Gemini API | AI Coach and Debug Mode functionality |
 |  | GitHub Public Events API | Fetches public commit activity |
-|  | ghchart.rshah.org | Renders GitHub contribution graph (SVG) |
 | **Deployment** | Google Cloud Run | Serverless deployment and hosting |
-|  | Budget Alerts & Free Tier | Cost control and safe usage limits |
 
 ---
 
