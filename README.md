@@ -1,131 +1,100 @@
+<div align="center">
+
 # 🚀 FOCUSYNC
+### Privacy-First Productivity & Burnout-Awareness App
 
-**FOCUSYNC** is a **privacy-first productivity and burnout-awareness app for developers**.  
-It helps students and developers track focus time, visualize productivity trends, and receive **context-aware AI guidance** — all while keeping user data local and secure.
+*A productivity app for developers that tracks focus time, visualizes trends, and provides context-aware AI guidance—all while keeping user data local and secure.*
 
-> Focus well. Sync better.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-orange?style=for-the-badge&logo=google)
+![Google Cloud Run](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
 
----
-
-## ✨ Key Highlights
-
-- 🧠 Privacy-first (localStorage based, no central server)
-- ⏱️ Pomodoro-style focus tracking
-- 📊 Real-time productivity & burnout analytics
-- 🤖 AI Coach powered by Gemini
-- 🐙 GitHub activity insights (public data only)
-- 💼 LinkedIn growth tracking (manual, honest metrics)
-- 🎨 Flow-state UI with category-based themes
-- 🔐 Cost-efficient, student-friendly cloud usage
+</div>
 
 ---
 
-## 🧩 Core Concept
+# 📖 Overview
 
-FOCUSYNC follows a simple and effective loop:
+FOCUSYNC is a privacy-first productivity and burnout-awareness app for developers. It helps students and developers track focus time, visualize productivity trends, and receive context-aware AI guidance. 
 
+The core concept follows a simple and effective loop:
+1. Users track focus sessions using a timer.
+2. The app calculates productivity and burnout risk.
+3. An AI Coach analyzes these stats to give personalized advice.
 
-- Users track focus sessions using a timer
-- The app calculates productivity and burnout risk
-- An AI Coach analyzes these stats to give personalized advice
+All user data (sessions, moods, settings) is stored **locally in the browser**. No personal data is sent to any backend server, ensuring complete privacy.
 
-All user data (sessions, moods, settings) is stored **locally in the browser**.  
-No personal data is sent to any backend server.
+> *Focus well. Sync better.*
 
 ---
 
-## 🛠️ Tech Stack
+# ✨ Features
+
+- 🧠 **Privacy-First:** 100% localStorage based, no central server or hidden analytics.
+- ⏱️ **Pomodoro-Style Timer:** Focus tracking with category selection and smart break reminders.
+- 📊 **Real-Time Analytics:** Dashboards for productivity, burnout risk, and weekly focus trends.
+- 🤖 **AI Coach:** Gemini-powered context-aware guidance and a "Debug Mode" for clean code output.
+- 🐙 **GitHub Integration:** Fetches public commit activity and contribution graphs.
+- 💼 **LinkedIn Tracking:** Manual, honest metric tracking for career growth alongside coding.
+- 🎨 **Flow-State UI:** Category-based themes and engaging animations.
+- 🚨 **Smart Alerts:** Background monitoring for burnout risk and mood check-ins.
+
+---
+
+# 🏗 Architecture
+
+```mermaid
+graph TD
+    User["User (Student / Developer)"]
+    
+    subgraph CloudRun ["Google Cloud Run (Serverless Hosting)"]
+        ReactApp["React & TypeScript SPA"]
+        
+        subgraph UI_Modules ["FOCUSYNC Modules"]
+            Timer["Focus Timer"]
+            Dashboard["Real-Time Dashboard"]
+            Analytics["Analytics (Recharts)"]
+            AICoach["AI Coach"]
+            Settings["Settings & Profile"]
+        end
+    end
+
+    subgraph External ["External APIs"]
+        Gemini["Google Gemini API (AI Coach & Debug)"]
+        GitHub["GitHub Public Events API"]
+    end
+    
+    subgraph Storage ["Privacy-First Data Layer"]
+        LocalStorage["Browser LocalStorage"]
+    end
+    
+    User --> ReactApp
+    ReactApp --> UI_Modules
+    
+    UI_Modules -. "Local Read/Write (Zero Backend)" .-> LocalStorage
+    
+    AICoach -- "Prompts & Context" --> Gemini
+    Dashboard -- "Fetch Public Commits" --> GitHub
+```
+
+---
+
+# 🛠 Tech Stack
 
 | Category | Technology | Purpose |
-|--------|-----------|--------|
-| **Frontend** | TypeScript | Type-safe application logic |
-|  | React | Component-based UI development |
-|  | Tailwind CSS | Utility-first styling and theming |
-|  | Recharts | Data visualization and analytics charts |
+|----------|------------|---------|
+| **Frontend** | React, TypeScript | Component-based UI and type-safe logic |
+| **Styling** | Tailwind CSS | Utility-first styling and dynamic themes |
+| **Visualization**| Recharts | Data visualization and analytics charts |
 | **AI & APIs** | Gemini API | AI Coach and Debug Mode functionality |
-|  | GitHub Public Events API | Fetches public commit activity |
-| **Deployment** | Google Cloud Run | Serverless deployment and hosting |
+| **Integrations**| GitHub API | Fetches public commit activity |
+| **Deployment** | Google Cloud Run | Serverless deployment and scale-to-zero hosting |
 
 ---
 
-## ⏱️ Features Overview
-
-### 1️⃣ Focus Timer (Tracker)
-- Pomodoro-style focus sessions
-- Category selection (DSA, Web Dev, Projects, etc.)
-- Dynamic theme changes per category
-- Flow-state UI with animations
-- Smart break reminders based on user preferences
-
----
-
-### 2️⃣ Dashboard (Real-Time Insights)
-- **Productivity Score**  
-- **Burnout Risk Meter**
-- +20% if work > 4 hours
-- +50% if work > 8 hours
-- +30% if last mood = “Exhausted”
-- −20% if last mood = “Great”
-- Weekly focus trend (area chart)
-- Recent GitHub commit messages
-
----
-
-### 3️⃣ Analytics (Deep Dive)
-- Pie chart showing time distribution by category
-- Bar chart for daily focus hours (current week)
-- Helps identify patterns, imbalance, and overwork
-
----
-
-### 4️⃣ AI Coach (Gemini Integration)
-- Context-aware responses using:
-- focus duration
-- mood
-- user goals
-- Encourages rest when burnout risk is high
-- Motivates gently when productivity is low
-
-#### 🛠️ Debug Mode
-- Switches AI to “Engineering Expert”
-- Accepts code input
-- Returns clean, copy-pasteable Markdown code blocks
-- Prevents layout breaking for long code outputs
-
----
-
-### 5️⃣ GitHub Integration
-- User provides GitHub profile URL
-- App fetches **public events only**
-- Displays:
-- recent commit messages
-- contribution graph (SVG)
-- No private repositories or code content accessed
-
----
-
-### 6️⃣ LinkedIn Metrics Tracking
-- LinkedIn has no public API for private analytics
-- Users manually enter:
-- profile views
-- post impressions
-- App visualizes career growth alongside coding activity
-- Ensures **accuracy and honesty**, no data hallucination
-
----
-
-## ⚙️ Settings & Profile
-
-- User profile (role, focus type, goals)
-- Daily goal & break preferences
-- GitHub & LinkedIn connections
-- Notification permissions
-- AI personalization toggles
-- Full privacy & data controls
-
----
-
-## 🔐 Privacy & Data Philosophy
+# 🔐 Privacy & Data Philosophy
 
 FOCUSYNC is built with privacy as a **core design principle**.
 
@@ -134,82 +103,87 @@ FOCUSYNC is built with privacy as a **core design principle**.
 - No tracking scripts
 - No hidden analytics
 
-Users can:
-- export their data
-- clear history
-- delete everything instantly
+Users can **export their data**, **clear history**, or **delete everything instantly** right from the settings.
 
 ---
 
-## 🚨 Smart Alert System
-
-- Background monitoring using React hooks
-- Triggers:
-- Burnout alerts after excessive work
-- Mood check-in reminders
-- Notifications delivered via:
-- in-app toasts
-- browser system notifications (with consent)
-
----
-
-## 🌍 Deployment & Cost Control
-
-- Deployed on **Google Cloud Run**
-- Uses scale-to-zero infrastructure
-- Minimal real-world cost (student usage)
-- Budget alerts enabled for safety
-
----
-
-## 📸 Screenshots
-
-> A quick visual walkthrough of FOCUSYNC
+# 📸 Screenshots
 
 ### 🏠 Dashboard
 <img width="1920" height="990" alt="Screenshot (980)" src="https://github.com/user-attachments/assets/aa45dbb6-0c6b-46fa-a2c2-5584a14bc325" />
 
+---
+
 ### ⏱️ Focus Timer (Flow State)
 <img width="1920" height="1001" alt="Screenshot (981)" src="https://github.com/user-attachments/assets/a6c8cd80-ecf1-4788-9d81-28ebfb91b440" />
+
+---
 
 ### 📊 Analytics
 <img width="1920" height="986" alt="Screenshot (982)" src="https://github.com/user-attachments/assets/46741d5d-ee5f-4b5b-a49f-788c8ef15660" />
 
+---
+
 ### 🤖 AI Coach
 <img width="1920" height="979" alt="Screenshot (983)" src="https://github.com/user-attachments/assets/e5268591-4957-40d2-bdeb-1f3fa4568e5b" />
+
+---
 
 ### ⚙️ Settings & Profile
 <img width="1920" height="993" alt="Screenshot (984)" src="https://github.com/user-attachments/assets/688cca35-dd48-478a-85e5-a8513c690080" />
 
 ---
 
-## 🧪 Getting Started (Run Locally)
+# ⚙️ Installation & Setup
 
-### Clone the repository
+## 1. Clone the repository
 ```bash
 git clone https://github.com/Khushi1310-nayak/focusync.git
 cd focusync
 ```
-### Install dependencies
+
+## 2. Install dependencies
 ```bash
-npm Install
+npm install
 ```
-### Start the development server
+
+## 3. Start the development server
 ```bash
 npm run dev
 ```
-### 🤝 Contributing
+
+---
+
+# 🤝 Contributing
 
 Contributions are welcome!
+
 Feel free to fork the repository, create a feature branch, and submit a pull request.
 
-### 📜 License
+---
+
+# 📜 License
 
 This project is licensed under the MIT License.
 
-#### 👩‍💻 Author
+---
 
-Khushi Nayak
-Student Developer | Hackathon Enthusiast
+# 👩💻 Author
 
-GitHub: https://github.com/Khushi1310-nayak
+## **Manisa Nayak**
+
+🎓 Student | Full-Stack Developer | AI Product Builder
+
+Passionate about:
+- Full-Stack Architecture
+- User Experience (UI/UX)
+- AI Automation & Product Building
+
+### Connect with Me
+
+**GitHub:** https://github.com/Khushi1310-nayak  
+**LinkedIn:** https://www.linkedin.com/in/manisa-nayak-185bb5378/
+
+---
+
+## ⭐ If you found this project interesting, consider giving it a Star!
